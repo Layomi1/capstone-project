@@ -1,0 +1,61 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+footer {
+    min-height: 18.75rem;
+    background-color: #96C3D7;
+    margin-top: 2rem;
+}
+
+.footerNavs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+ul li {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    margin-top: 2rem;
+}
+
+.footerNavs ul li a {
+    margin: 10px 0;
+    color: #000000;
+}
+
+.footerPaymentHandles {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.paymentMethods {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.footerHandles {
+    display: flex;
+    flex-direction: row;
+    gap: .8rem;
+}
+
+.footerLogoContainer {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
