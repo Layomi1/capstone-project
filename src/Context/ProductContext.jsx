@@ -13,11 +13,13 @@ import ErrorBoundary from "../components/ComponentDidCatch"; // Import the corre
 // }
 export const ProductsContext = createContext(null);
 
-const ProductsContextProvider = (props) => {
+const ProductsContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [cart, setCart] = useState(null);
+  const [counter, setCounter] = useState(0);
 
   async function fetchProducts() {
     try {
@@ -36,6 +38,18 @@ const ProductsContextProvider = (props) => {
     fetchProducts();
   }, []);
 
+  // storing cart details in local storage
+  // useEffect(() => {
+  //   const cartLocalStorage = JSON.parse(
+  //     localStorage.getItem("cartItems") || "[]"
+  //   );
+  //   setCartItems(cartLocalStorage);
+  // }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem("cartItems", JSON.stringify("cartItems"));
+  // }, [cartItems]);
+
   if (loading) {
     return <div>Loading data! Please wait...</div>;
   }
@@ -52,111 +66,36 @@ const ProductsContextProvider = (props) => {
     return quantity;
   };
 
-  function moveToCart(id) {
-    const quantity = getProductQuantity(id);
-    if (quantity === 0) {
-      setCartItems([
-        ...cartItems,
-        {
-          id: id,
-          quantity: 1,
-        },
-      ]);
-    } else {
-      setCartItems(
-        cartItems.map((product) =>
-          product.id === id
-            ? { ...product, quantity: product.quantity + 1 }
-            : product
-        )
-      );
-    }
-    alert("Item added Successfully! ");
-  }
-  // const moveToCart = (itemId) => {
-  //   setCartItems((prev) => [...prev, itemId]);
-
-  //   alert("Item added Successfully! ");
-  // };
-
-  // const removeFromCart = (itemId) => {
-  //   setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-  // };
-
-  function removeFromCart(id) {
-    const quantity = getProductQuantity(id);
-    if (quantity === 1) {
-      deleteFromCart(id);
-    } else {
-      setCartItems(
-        cartItems.map((product) =>
-          product.id === id
-            ? { ...product, quantity: product.quantity - 1 }
-            : product
-        )
-      );
-    }
+  function addToCart(product) {
+    let cart = [];
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Product added successfully!");
   }
 
-  const deleteFromCart = (id) => {
-    setCartItems((cartItems) =>
-      cartItems.filter((currentProduct) => {
-        return currentProduct.id != id;
-      })
-    );
-  };
-
-  // const getTotalCost = () => {
-  //   let totalAmount = 0;
-  //   for (const item in cartItems) {
-  //     if (cartItems[item] > 0) {
-  //       let itemInfo = products.find((product) => product.id === Number(item));
-  //       totalAmount += itemInfo.price * cartItems[item];
-  //     }
-
-  //     return totalAmount;
-  //   }
-  // };
-
-  function getTotalCost() {
-    let totalCost = 0;
-    cartItems.map((item) => {
-      const productData = products.find(item.id);
-      totalCost += productData.price * item.quantity;
-    });
-    return totalCost;
+  function deleteFromCart(productId) {
+    const updatedCart = cart.filter((item) => item.id !== productId);
+    setCartItems(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   }
-
-  // cart counts
-  const cartItemsCount = cartItems.reduce(
-    (sum, product) => (sum = product.quantity),
-    0
-  );
-  // const getTotalCartItems = () => {
-  //   let totalItem = 0;
-  //   for (const item in cartItems) {
-  //     if (cartItems[item] > 0) {
-  //       totalItem += cartItems[item];
-  //     }
-  //   }
-  //   return totalItem;
-  // };
 
   const contextValue = {
     products,
     items: cartItems,
-    moveToCart,
-    removeFromCart,
+    cart,
+    setCart,
+    counter,
+    setCounter,
+    addToCart,
     deleteFromCart,
     getProductQuantity,
-    cartItemsCount,
-    getTotalCost,
   };
   // Wrap the context provider with ErrorBoundary component
   return (
     <ErrorBoundary>
       <ProductsContext.Provider value={contextValue}>
-        {props.children}
+        {children}
       </ProductsContext.Provider>
     </ErrorBoundary>
   );

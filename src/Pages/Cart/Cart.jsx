@@ -1,21 +1,40 @@
 import styles from "./Cart.module.css";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import CartItem from "../../components/CartItem/CartItem";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../Context/ProductContext";
-const AddToCart = () => {
-  const cart = useContext(ProductsContext);
+
+const Cart = () => {
+  const { cart, setCart, counter, setCounter } = useContext(ProductsContext);
+  const [getTotalCost, setGetTotalCost] = useState(0);
+
+  useEffect(() => {
+    let data = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(data);
+    setCounter(data ? data.length : 0);
+
+    // Calculate total cost price
+    if (data && data.length > 0) {
+      const getTotalCost = data.reduce(
+        (acc, current) => acc + current.price,
+        0
+      );
+      setGetTotalCost(getTotalCost);
+    } else {
+      setGetTotalCost(0);
+    }
+  }, [setCart, setCounter]);
 
   return (
     <div className={styles.cart}>
       <h3 className={styles.title}>Cart</h3>
 
-      {cart.cartItemsCount > 0 ? (
+      {counter > 0 ? (
         <>
-          {cart.items.map((currentProduct, index) => (
+          {cart.map((currentProduct) => (
             <CartItem
-              key={index}
-              id={currentProduct.id}
+              key={currentProduct.id}
+              title={currentProduct.title}
               thumbnail={currentProduct.thumbnail}
               price={currentProduct.price}
             />
@@ -23,14 +42,16 @@ const AddToCart = () => {
 
           <div className={styles.all}>
             <div className={styles.input}>
-              <label htmlFor="checkbox"></label>
-              <input type="checkbox" />
+              <label className={styles.container}>
+                <input type="checkbox" />
+                <span className={styles.checkmark}></span>
+              </label>
             </div>
 
             <div className={styles.payment}>
               <p>All</p>
               <div className={styles["payment-inner"]}>
-                <h3> Total Price: &#8358;{cart.getTotalCost().toFixed(2)}</h3>
+                <h3> Total Price: &#8358;{getTotalCost.toFixed(2)}</h3>
                 <CustomButton
                   text="Check Out"
                   type="orange"
@@ -41,10 +62,10 @@ const AddToCart = () => {
           </div>
         </>
       ) : (
-        <h1>Thre is no item in your cart!</h1>
+        <h1>There is no item in your cart!</h1>
       )}
     </div>
   );
 };
 
-export default AddToCart;
+export default Cart;
