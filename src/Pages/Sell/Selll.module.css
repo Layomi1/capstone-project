@@ -1,0 +1,142 @@
+.sellersCorner{
+    padding: 5rem 6.75rem 5rem 6.25rem;
+    
+}
+
+.sellersCornerTitleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sellersCornerTitle {
+    font-size: 2.25rem;
+    font-weight: bold;
+}
+
+.sellersCornerLine{
+    height: .2rem;
+    width: 15.50rem;
+    background: #0f0f0fe5;
+}
+
+.organiseSpace {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-top: 1.5rem;
+    color: #1F2D3B;
+}
+
+.dono {
+    color: #0A3755;
+}
+
+.sellersFormContainer {
+    display: flex;
+    width: 100%;
+    margin-top: 2rem;
+}
+.sellersForm{
+    display: block;
+    width: 50%;
+    height: 100%;
+    
+}
+
+.labelTitle {
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: #000000;
+}
+
+.inputTypes {
+    width: 29.125rem;
+    height: 3.5rem;
+    border: 1px solid #3C5A82;
+}
+
+.productDescription {
+    width: 29.125rem;
+    height: 5rem;
+    border: 1px solid #3C5A82; 
+}
+
+.receiptTitle {
+    margin-right: 2rem;
+}
+
+.selection {
+    width: 20.344rem;
+    height: 3.5rem;
+    border: 1px solid #3C5A82;
+    padding: 1rem;
+    font-size: 1.125rem;
+    font-weight: 400;
+    margin-top: 2rem;
+}
+
+.itemSelection {
+    margin-left: 10.8rem;
+    border: none;
+    background-color: #ffffff;
+}
+
+.missingPart {
+    position: relative;
+    bottom: 1.5rem;
+    left: 5rem;
+}
+
+.missigPartInput {
+    margin-top: .8rem;
+    width: 29.125rem;
+    height: 3.5rem;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 1px solid #3C5A82;
+}
+
+.uploadImageContainer {
+    margin-top: 4rem;
+}
+
+.uploadImage h4{
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.uploadImage p {
+    font-size: 0.875rem;
+    padding-top: .5rem;
+}
+
+.imageUploadIcons {
+    margin-top: 1rem;
+}
+
+.sellersImageContainer  {
+    width: 50%;
+    position: relative;
+    
+}
+
+.sellerssImg {
+    width: 34rem;
+    margin: 5rem auto;
+
+}
+
+.congratsImg {
+    width: 12.563rem;
+    position: absolute;
+    top: 28rem;
+    left: 12rem;
+}
+
+.big-btn {
+    width: 17.375rem;
+    font-weight: 700;
+    margin: 5rem auto 1rem auto;
+   
+  }
