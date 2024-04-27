@@ -47,7 +47,9 @@
     width: 26.25rem;
     border: 1px solid #3C5A82;
     margin-top: .5rem;
+    padding: 1rem;
 }
+
 
 .eyes {
     position: relative;
