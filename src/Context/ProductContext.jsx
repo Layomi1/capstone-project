@@ -1,16 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import ErrorBoundary from "../components/ComponentDidCatch"; // Import the correct ErrorBoundary component
+import CartItem from "../components/CartItem/CartItem";
 
-// export function useProducts(id, products) {
-//   const [product, setProduct] = useState({});
-
-//   useEffect(() => {
-//     const data = products.find((item) => item.id === id);
-//     setProduct(data);
-//   }, [id, products]);
-
-//   return product;
-// }
 export const ProductsContext = createContext(null);
 
 const ProductsContextProvider = ({ children }) => {
@@ -38,18 +29,6 @@ const ProductsContextProvider = ({ children }) => {
     fetchProducts();
   }, []);
 
-  // storing cart details in local storage
-  // useEffect(() => {
-  //   const cartLocalStorage = JSON.parse(
-  //     localStorage.getItem("cartItems") || "[]"
-  //   );
-  //   setCartItems(cartLocalStorage);
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem("cartItems", JSON.stringify("cartItems"));
-  // }, [cartItems]);
-
   if (loading) {
     return <div>Loading data! Please wait...</div>;
   }
@@ -71,13 +50,28 @@ const ProductsContextProvider = ({ children }) => {
     cart = JSON.parse(localStorage.getItem("cart")) || [];
     cart.push(product);
     localStorage.setItem("cart", JSON.stringify(cart));
+
     alert("Product added successfully!");
   }
 
   function deleteFromCart(productId) {
-    const updatedCart = cart.filter((item) => item.id !== productId);
-    setCartItems(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    const newCart = [...cart];
+    newCart.splice(productId, 1);
+    setCart(newCart);
+    // let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    // console.log(productId);
+    // // Find the index of the product in the cart
+    // const index = cart.findIndex((item) => item.id === productId);
+    // console.log(index);
+    // if (index > 1) {
+    //   // Remove the product from the cart
+    //   cart.splice(index, 1);
+    //   localStorage.setItem("cart", JSON.stringify(cart));
+    //   setCart(newCart);
+    //   alert("Product removed from cart!");
+    // } else {
+    //   alert("Product not found in cart!");
+    // }
   }
 
   const contextValue = {
