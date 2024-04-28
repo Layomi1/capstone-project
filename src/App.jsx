@@ -16,6 +16,7 @@ import Order from "./Pages/Order/Order";
 import Advert from "./Pages/Advert/Advert";
 import Recent from "./Pages/Recent/Recent";
 import ErrorBoundary from "./components/ComponentDidCatch";
+// import { useLoaderData } from "react-router-dom/server";
 
 function App() {
   return (
