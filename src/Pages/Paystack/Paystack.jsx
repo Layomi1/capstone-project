@@ -8,18 +8,6 @@ const Paystack = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
 
-  // const publicKey = "pk_test_ebed95db8e8916621f8a60682603fa27a3e3c44f";
-
-  // const config = {
-  //   reference: new Date().getTime(),
-  //   email: email,
-  //   amount: amount * 100, // Paystack requires amount in kobo (100 kobo = 1 NGN)
-  //   publicKey: publicKey,
-  // };
-
-  // Initialize payment using usePaystackPayment hook
-  // const initializePayment = usePaystackPayment(config);
-
   function handleSubmit(e) {
     e.preventDefault();
     const paystack = new PaystackPop();
@@ -29,8 +17,14 @@ const Paystack = () => {
       email,
       firstname,
       lastname,
+      onSuccess(transaction) {
+        let message = `Payment Completed! ${transaction.reference}`;
+        alert(message);
+      },
+      onCancel() {
+        alert("You have cancelled the transaction!");
+      },
     });
-    alert("me");
   }
 
   return (
