@@ -8,7 +8,7 @@ import { ProductsContext } from "../../Context/ProductContext";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openNote, setIsOpenNote] = useState(false);
-  const cart = useContext(ProductsContext);
+  const { counter } = useContext(ProductsContext);
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
@@ -104,7 +104,7 @@ const Navbar = () => {
               fill="black"
             />
           </svg>
-          <span className={styles.count}>{cart.cartItemsCount}</span>
+          <span className={styles.count}>{counter}</span>
         </Link>
 
         {/* bell */}

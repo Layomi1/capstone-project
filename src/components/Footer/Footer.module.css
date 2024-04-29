@@ -17,14 +17,21 @@ footer {
 }
 
 
+ ft/donate-2
 footer ul li {
+ul li {
+ main
     list-style-type: none;
     display: flex;
     flex-direction: column;
 }
 
+ft/donate-2
 footer ul {
 
+
+ul {
+main
     margin-top: 2rem;
 }
 

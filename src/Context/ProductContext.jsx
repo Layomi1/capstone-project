@@ -1,23 +1,16 @@
 import { createContext, useEffect, useState } from "react";
 import ErrorBoundary from "../components/ComponentDidCatch"; // Import the correct ErrorBoundary component
+import CartItem from "../components/CartItem/CartItem";
 
-// export function useProducts(id, products) {
-//   const [product, setProduct] = useState({});
-
-//   useEffect(() => {
-//     const data = products.find((item) => item.id === id);
-//     setProduct(data);
-//   }, [id, products]);
-
-//   return product;
-// }
 export const ProductsContext = createContext(null);
 
-const ProductsContextProvider = (props) => {
+const ProductsContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [cart, setCart] = useState(null);
+  const [counter, setCounter] = useState(0);
 
   async function fetchProducts() {
     try {
@@ -52,111 +45,51 @@ const ProductsContextProvider = (props) => {
     return quantity;
   };
 
-  function moveToCart(id) {
-    const quantity = getProductQuantity(id);
-    if (quantity === 0) {
-      setCartItems([
-        ...cartItems,
-        {
-          id: id,
-          quantity: 1,
-        },
-      ]);
-    } else {
-      setCartItems(
-        cartItems.map((product) =>
-          product.id === id
-            ? { ...product, quantity: product.quantity + 1 }
-            : product
-        )
-      );
-    }
-    alert("Item added Successfully! ");
-  }
-  // const moveToCart = (itemId) => {
-  //   setCartItems((prev) => [...prev, itemId]);
+  function addToCart(product) {
+    let cart = [];
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
 
-  //   alert("Item added Successfully! ");
-  // };
-
-  // const removeFromCart = (itemId) => {
-  //   setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-  // };
-
-  function removeFromCart(id) {
-    const quantity = getProductQuantity(id);
-    if (quantity === 1) {
-      deleteFromCart(id);
-    } else {
-      setCartItems(
-        cartItems.map((product) =>
-          product.id === id
-            ? { ...product, quantity: product.quantity - 1 }
-            : product
-        )
-      );
-    }
+    alert("Product added successfully!");
   }
 
-  const deleteFromCart = (id) => {
-    setCartItems((cartItems) =>
-      cartItems.filter((currentProduct) => {
-        return currentProduct.id != id;
-      })
-    );
-  };
-
-  // const getTotalCost = () => {
-  //   let totalAmount = 0;
-  //   for (const item in cartItems) {
-  //     if (cartItems[item] > 0) {
-  //       let itemInfo = products.find((product) => product.id === Number(item));
-  //       totalAmount += itemInfo.price * cartItems[item];
-  //     }
-
-  //     return totalAmount;
-  //   }
-  // };
-
-  function getTotalCost() {
-    let totalCost = 0;
-    cartItems.map((item) => {
-      const productData = products.find(item.id);
-      totalCost += productData.price * item.quantity;
-    });
-    return totalCost;
+  function deleteFromCart(productId) {
+    const newCart = [...cart];
+    newCart.splice(productId, 1);
+    setCart(newCart);
+    // let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    // console.log(productId);
+    // // Find the index of the product in the cart
+    // const index = cart.findIndex((item) => item.id === productId);
+    // console.log(index);
+    // if (index > 1) {
+    //   // Remove the product from the cart
+    //   cart.splice(index, 1);
+    //   localStorage.setItem("cart", JSON.stringify(cart));
+    //   setCart(newCart);
+    //   alert("Product removed from cart!");
+    // } else {
+    //   alert("Product not found in cart!");
+    // }
   }
-
-  // cart counts
-  const cartItemsCount = cartItems.reduce(
-    (sum, product) => (sum = product.quantity),
-    0
-  );
-  // const getTotalCartItems = () => {
-  //   let totalItem = 0;
-  //   for (const item in cartItems) {
-  //     if (cartItems[item] > 0) {
-  //       totalItem += cartItems[item];
-  //     }
-  //   }
-  //   return totalItem;
-  // };
 
   const contextValue = {
     products,
     items: cartItems,
-    moveToCart,
-    removeFromCart,
+    cart,
+    setCart,
+    counter,
+    setCounter,
+    addToCart,
     deleteFromCart,
     getProductQuantity,
-    cartItemsCount,
-    getTotalCost,
   };
   // Wrap the context provider with ErrorBoundary component
   return (
     <ErrorBoundary>
       <ProductsContext.Provider value={contextValue}>
-        {props.children}
+        {children}
       </ProductsContext.Provider>
     </ErrorBoundary>
   );
