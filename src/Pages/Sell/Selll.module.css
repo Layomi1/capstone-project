@@ -63,6 +63,10 @@
     border: 1px solid #3C5A82; 
 }
 
+.receiptUploadContainer {
+    padding: 1rem 0;
+}
+
 .receiptTitle {
     margin-right: 2rem;
 }
@@ -113,8 +117,13 @@
 }
 
 .imageUploadIcons {
-    margin-top: 1rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    
 }
+
 
 .sellersImageContainer  {
     width: 50%;

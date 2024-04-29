@@ -4,8 +4,9 @@ import style from "./ImageUpload.module.css"
 function ImageUpload () {
     return (
         <>
-            <input className={style.imageUploadInput} />
-            <span className={style.imageUploadplus}>+</span>
+            <input type="file" id="customInput" className={style.imageUploadInput} />
+            <label for ="customInput" className={style.imageUploadplus}>+</label>
+            
         </>
     )
 }
