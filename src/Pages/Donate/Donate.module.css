@@ -1,47 +1,43 @@
-.sellersCorner{
-    padding: 5rem 6.75rem 5rem 6.25rem;
-    
+
+.donateTitleContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
-.sellersCornerTitleContainer {
+.donateTitleParaContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.sellersCornerTitle {
-    font-size: 2.25rem;
+.donateTitle {
+    font-size: 2rem;
     font-weight: bold;
 }
 
-.sellersCornerLine{
-    height: .2rem;
-    width: 15.50rem;
-    background: #0f0f0fe5;
+.titlePara {
+    font-size: 1.25rem;
+    font-weight: 400;
+    padding-top: .2rem;
 }
 
-.organiseSpace {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 500;
-    padding-top: 1.5rem;
-    color: #1F2D3B;
-}
-
-.dono {
-    color: #0A3755;
+.donateImage {
+    width: 18.063rem;
 }
 
 .sellersFormContainer {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    margin-top: 2rem;
+    
 }
 .sellersForm{
     display: block;
     width: 50%;
     height: 100%;
-    
 }
 
 .labelTitle {
@@ -97,47 +93,3 @@
     font-size: 1rem;
     border: 1px solid #3C5A82;
 }
-
-.uploadImageContainer {
-    margin-top: 4rem;
-}
-
-.uploadImage h4{
-    font-size: 1.125rem;
-    font-weight: 600;
-}
-
-.uploadImage p {
-    font-size: 0.875rem;
-    padding-top: .5rem;
-}
-
-.imageUploadIcons {
-    margin-top: 1rem;
-}
-
-.sellersImageContainer  {
-    width: 50%;
-    position: relative;
-    
-}
-
-.sellerssImg {
-    width: 34rem;
-    margin: 5rem auto;
-
-}
-
-.congratsImg {
-    width: 12.563rem;
-    position: absolute;
-    top: 28rem;
-    left: 12rem;
-}
-
-.big-btn {
-    width: 17.375rem;
-    font-weight: 700;
-    margin: 5rem auto 1rem auto;
-   
-  }

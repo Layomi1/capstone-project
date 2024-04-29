@@ -16,19 +16,19 @@ const Selll = () => {
         <div className={style.sellersFormContainer}>
             <form action="" className={style.sellersForm}>
               <label className={style.labelTitle}>Name/Title of item</label><br/>
-                <input type="Text" value="" className={style.inputTypes}/><br/><br/>
+              <input type="text" className={style.inputTypes}/><br/><br/>
 
                 <label className={style.labelTitle}>Product Description</label><br/>
                 <textarea className={style.productDescription}></textarea><br/><br/>
 
                 <label className={style.labelTitle}>Item Location</label><br/>
-                <input type="Text" value="" className={style.inputTypes} /><br/><br/>
+                <input type="text" className={style.inputTypes}/><br/><br/>
 
                 <label className={style.labelTitle}>Year of Purchase</label><br/>
-                <input type="number" value="" className={style.inputTypes} /><br/><br/>
+                <input type="number" className={style.inputTypes}/><br/><br/>
 
                 <label className={style.labelTitle}>Phone Number</label><br/>
-                <input type="text" value="" className={style.inputTypes} /><br/><br/>
+                <input type="phone" className={style.inputTypes}/><br/><br/>
                 <div className={style.receiptUploadContainer}>
                     <label className={style.receiptTitle}>Purchase Receipt</label>
                     <ImageUpload/>
