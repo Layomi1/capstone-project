@@ -1,28 +1,85 @@
+import { useState } from "react";
+import styles from "./Paystack.module.css";
+import PaystackPop from "@paystack/inline-js";
+
 const Paystack = () => {
+  const [email, setEmail] = useState("");
+  const [amount, setAmount] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const paystack = new PaystackPop();
+    paystack.newTransaction({
+      key: "pk_test_ebed95db8e8916621f8a60682603fa27a3e3c44f",
+      amount: amount * 100,
+      email,
+      firstname,
+      lastname,
+      onSuccess(transaction) {
+        let message = `Payment Completed! ${transaction.reference}`;
+        alert(message);
+      },
+      onCancel() {
+        alert("You have cancelled the transaction!");
+      },
+    });
+  }
+
   return (
-    <div>
-      <form id="paymentForm">
-        <div className="form-group">
+    <div className={styles.pay}>
+      <h1>Make Payment </h1>
+      <form id="paymentForm" onSubmit={handleSubmit}>
+        <div className={styles["form-group"]}>
           <label htmlFor="email">Email Address</label>
-          <input type="email" id="email-address" required />
+          <input
+            type="email"
+            name="email"
+            id="email-address"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
-        <div className="form-group">
+
+        <div className={styles["form-group"]}>
           <label htmlFor="amount">Amount</label>
-          <input type="tel" id="amount" required />
+          <input
+            type="tel"
+            name="amount"
+            id="amount"
+            required
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
         </div>
-        <div className="form-group">
-          <label htmlFor="first-name">First Name</label>
-          <input type="text" id="first-name" />
+
+        <div className={styles["form-group"]}>
+          <label htmlFor="firstname">First Name</label>
+          <input
+            type="text"
+            name="firstname"
+            id="firstname"
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
+          />
         </div>
-        <div className="form-group">
-          <label htmlFor="last-name">Last Name</label>
-          <input type="text" id="last-name" />
+
+        <div className={styles["form-group"]}>
+          <label htmlFor="lastname">Last Name</label>
+          <input
+            type="text"
+            name="lastname"
+            id="lastname"
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
+          />
         </div>
-        <div className="form-submit">
-          <button type="submit" onClick="payWithPaystack()">
-            Pay
-          </button>
-        </div>
+
+        <button className={styles.btn} type="submit">
+          Pay with Paystack
+        </button>
       </form>
     </div>
   );

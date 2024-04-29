@@ -3,6 +3,7 @@ import CustomButton from "../../components/CustomButton/CustomButton";
 import CartItem from "../../components/CartItem/CartItem";
 import { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../Context/ProductContext";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { cart, setCart, counter, setCounter } = useContext(ProductsContext);
@@ -31,13 +32,15 @@ const Cart = () => {
 
       {counter > 0 ? (
         <>
-          {cart.map((currentProduct) => (
-            <CartItem
-              key={currentProduct.id}
-              title={currentProduct.title}
-              thumbnail={currentProduct.thumbnail}
-              price={currentProduct.price}
-            />
+          {cart.map((currentProduct, idx) => (
+            <li key={idx}>
+              <CartItem
+                id={currentProduct.id}
+                title={currentProduct.title}
+                thumbnail={currentProduct.thumbnail}
+                price={currentProduct.price}
+              />
+            </li>
           ))}
 
           <div className={styles.all}>
@@ -52,11 +55,13 @@ const Cart = () => {
               <p>All</p>
               <div className={styles["payment-inner"]}>
                 <h3> Total Price: &#8358;{getTotalCost.toFixed(2)}</h3>
-                <CustomButton
-                  text="Check Out"
-                  type="orange"
-                  buttonStyle={styles["small-btn"]}
-                />
+                <Link to="/pay">
+                  <CustomButton
+                    text="Check Out"
+                    type="orange"
+                    buttonStyle={styles["small-btn"]}
+                  />
+                </Link>
               </div>
             </div>
           </div>
