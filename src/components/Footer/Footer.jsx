@@ -57,7 +57,7 @@ const Footer = () => {
         </div>
         <div className={style.footerLogoContainer}>
            <Logo className={style.footerLogo}/>
-           <a href="#">Copyright © 2024 Donodeclutter.com. All rights reserved</a>
+           <a href="#" className={style.copyRight}>Copyright © 2024 Donodeclutter.com. All rights reserved</a>
         </div>
       
         

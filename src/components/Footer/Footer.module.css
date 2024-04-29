@@ -17,13 +17,13 @@ footer {
 }
 
 
-ul li {
+footer ul li {
     list-style-type: none;
     display: flex;
     flex-direction: column;
 }
 
-ul {
+footer ul {
     margin-top: 2rem;
 }
 
@@ -58,4 +58,8 @@ ul {
     align-items: center;
     justify-content: center;
     margin-top: 2rem;
+}
+
+.copyRight {
+    color: #000000;
 }
