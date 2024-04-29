@@ -18,7 +18,7 @@ const Donate = () => {
         </div>
         <div className={style.sellersFormContainer}>
             <form action="" className={style.sellersForm}>
-              <label className={style.labelTitle}>Name of Product (s)</label><br/>
+              <label className={style.labelTitle}>Name/Title of item</label><br/>
               <input type="text" className={style.inputTypes}/><br/><br/>
 
                 <label className={style.labelTitle}>Product Description</label><br/>
@@ -27,9 +27,16 @@ const Donate = () => {
                 <label className={style.labelTitle}>Item Location</label><br/>
                 <input type="text" className={style.inputTypes}/><br/><br/>
 
+                <label className={style.labelTitle}>Year of Purchase</label><br/>
+                <input type="number" className={style.inputTypes}/><br/><br/>
+
                 <label className={style.labelTitle}>Phone Number</label><br/>
                 <input type="phone" className={style.inputTypes}/><br/><br/>
                
+                <div className={style.receiptUploadContainer}>
+                    <label className={style.receiptTitle}>Purchase Receipt</label>
+                    <ImageUpload/>
+                </div>
                 <div>
                     <div className={style.selection}>Category
                     <select className={style.itemSelection}>
@@ -53,14 +60,6 @@ const Donate = () => {
                     </div>
                     <input type="text" placeholder="if yes, state the missing part(s)" className={style.missigPartInput} />
 
-                    <div className={style.selection}>NGOs
-                    <select className={style.itemSelection}>
-                      <option value=""></option>
-                      <option value=""></option>
-                    </select>
-                    </div>
-                    <p className={style.selectedNGOs}>Donations are sent to selected NGOs</p>
-
                     <div className={style.uploadImageContainer}>
                         <div className={style.uploadImage}>
                           <h4>Add Photos</h4>
@@ -75,15 +74,9 @@ const Donate = () => {
                         </div>
                     </div>
                    
-                </div>
+                </div><br/><br/>
                
-                <Link to="/">
-                      <CustomButton
-                        buttonStyle={style["big-btn"]}
-                        type="orange"
-                        text="Donate"
-                      />
-                    </Link>
+               
             </form>
         </div>
 
