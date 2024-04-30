@@ -1,0 +1,84 @@
+.createAccountContainer {
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.createAccountTitleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.createAccountTitle {
+    font-size: 2.25rem;
+    font-weight: bold;
+}
+
+.createAccountLine{
+    height: .2rem;
+    width: 20.50rem;
+    background: #0f0f0fe5;
+}
+
+
+.createAccountForm {
+    display: block;
+    margin-top: 2rem;
+    height: 100%;
+ }
+ 
+
+.labelTitle {
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: #000000;
+}
+
+.inputTypes {
+    width: 29.125rem;
+    height: 3.5rem;
+    border: 1px solid #3C5A82;
+    padding: 1rem;
+}
+
+.labelUploadTitle {
+    margin-bottom: 4rem;
+    padding-top: 1rem;
+}
+
+.labelUploadTitle .labelTitle {
+    padding-right: 6.5rem;
+    
+}
+
+.labelUploadNin {
+    margin-bottom: 2rem;
+    
+}
+
+.labelUploadNin .labelTitle {
+    padding-right: 11.5rem;
+}
+
+.labelUploadNin  p {
+    position: relative;
+    bottom: .2rem;
+    font-size: 0.75rem;
+    font-weight: 300;
+}
+
+
+.big-btn {
+    width: 17.375rem;
+    font-weight: 700;
+    margin: 5rem auto 1rem auto;
+   
+  }
+
+
+  
+
+
+

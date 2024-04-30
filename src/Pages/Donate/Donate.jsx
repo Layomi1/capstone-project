@@ -3,6 +3,7 @@ import CustomButton from "../../components/CustomButton/CustomButton"
 import style from "../Donate/Donate.module.css"
 import DonateImg from "../../assets/donate.svg"
 import { Link } from "react-router-dom";
+
 const Donate = () => {
   return (
     <div className={style.donateContainer}>
