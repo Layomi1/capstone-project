@@ -2,11 +2,15 @@ import CustomButton from "../CustomButton/CustomButton";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import { RiMenuLine } from "react-icons/ri";
-import { useState, useRef, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { ProductsContext } from "../../Context/ProductContext";
+import { RxCaretDown } from "react-icons/rx";
+import Dropdown from "../Dropdown/Dropdown";
+import Note from "../Note/Note";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
   const [openNote, setIsOpenNote] = useState(false);
   const { counter } = useContext(ProductsContext);
 
@@ -14,26 +18,33 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   }
 
-  function showNote() {
+  const onMouseEnter = () => {
+    if (window.innerWidth < 768) {
+      setDropdown(false);
+    } else {
+      setDropdown(true);
+    }
+  };
+
+  const onMouseLeave = () => {
+    if (window.innerWidth < 768) {
+      setDropdown(false);
+    } else {
+      setDropdown(false);
+    }
+  };
+
+  const onClick = () => {
     setIsOpenNote(!openNote);
-  }
+  };
 
-  const noteListRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (noteListRef.current && !noteListRef.current.contains(e.target)) {
-        setIsOpenNote(false);
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
-
+  const onOutsideClick = () => {
+    if (Note.contains === "show-note") {
+      setIsOpenNote(false);
+    } else {
+      setIsOpenNote(false);
+    }
+  };
   return (
     <div className={styles.navbar}>
       <ul
@@ -62,14 +73,14 @@ const Navbar = () => {
           </Link>
         </li>
 
-        <li>
-          <Link to="/login">
-            <CustomButton
-              type="teal"
-              text="Login"
-              buttonStyle={styles["login-btn"]}
-            />
-          </Link>
+        <li onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+          <button
+            className={`styles ${["btn-teal"]} ${["login-btn"]} ${"login"}`}
+          >
+            Login
+            <RxCaretDown color="black" width="14px" height="10px" />
+          </button>
+          {dropdown && <Dropdown />}
         </li>
 
         <li>
@@ -111,7 +122,8 @@ const Navbar = () => {
         <div>
           <svg
             className={styles.notify}
-            onClick={showNote}
+            onClick={onClick}
+            onMouseLeave={onOutsideClick}
             width="43"
             height="44"
             viewBox="0 0 43 44"
@@ -123,22 +135,8 @@ const Navbar = () => {
               fill="black"
             />
           </svg>
-          <span className={styles.note}>
-            <ul
-              ref={noteListRef}
-              className={`${styles["note-lists"]} ${
-                openNote ? styles["show-note"] : styles[""]
-              }`}
-            >
-              <li>Your Ad is under review</li>
-              <li>Your Ad has been approved</li>
-              <li>100 people viewed your ad</li>
-              <li>
-                Congratulation on your sale! Payment is frozen for 24 hours
-              </li>
-              <li>Payment has been made into your bank account</li>
-            </ul>
-          </span>
+
+          {openNote && <Note />}
         </div>
       </div>
     </div>

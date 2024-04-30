@@ -1,0 +1,54 @@
+.note-lists {
+  position: absolute;
+  top: -32px;
+  width: 480px;
+  height: 865px;
+  /* height: auto; */
+  border: 2px solid #3c5a82;
+  padding: 30px;
+  background-color: #fff;
+  right: 0;
+}
+
+.note-lists .clicked {
+  /* right: 0; */
+  transform: translateX(-100%) 10s;
+}
+
+.show-note {
+  /* transform: 10s translateX(-100%); */
+}
+.note-lists li {
+  font-size: var(--button-font);
+  font-size: var(--small-size);
+  border-bottom: 1px solid #000;
+  padding-bottom: 2px;
+  text-wrap: nowrap;
+  line-height: 24px;
+  margin: 30px 0;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 1204px) {
+  .note ul {
+    width: 400px;
+  }
+  .note ul li {
+    text-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .note ul {
+    width: 300px;
+  }
+  .note ul li {
+    text-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .note ul {
+    width: 250px;
+  }
+}
