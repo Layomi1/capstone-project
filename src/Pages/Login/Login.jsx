@@ -37,7 +37,7 @@ const Login = () => {
                     </Link>
                   
                     <p>Are you registered? If not, Sign up 
-                      <Link to="signup">
+                      <Link to="/signup">
                       <a href="#" className={style.here}>HERE</a>
                       </Link>
                       
