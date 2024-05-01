@@ -52,26 +52,26 @@ const ProductsContextProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(cart));
 
     alert("Product added successfully!");
+    setCounter(cart.length);
   }
 
-  function deleteFromCart(productId) {
+  function removeFromCart(productId) {
     const newCart = [...cart];
     newCart.splice(productId, 1);
     setCart(newCart);
-    // let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    // console.log(productId);
-    // // Find the index of the product in the cart
-    // const index = cart.findIndex((item) => item.id === productId);
-    // console.log(index);
-    // if (index > 1) {
-    //   // Remove the product from the cart
-    //   cart.splice(index, 1);
-    //   localStorage.setItem("cart", JSON.stringify(cart));
-    //   setCart(newCart);
-    //   alert("Product removed from cart!");
-    // } else {
-    //   alert("Product not found in cart!");
-    // }
+    setCounter(newCart.length);
+    if (newCart.length === 0) {
+      localStorage.removeItem("cart");
+    }
+  }
+
+  function deleteFromCart(product) {
+    let cart = [];
+    cart = JSON.parse(localStorage.removeItem("cartItem")) || [];
+    cart.splice(product);
+    localStorage.removeItem("cartItem", JSON.stringify(cart));
+
+    alert("Product removed successfully!");
   }
 
   const contextValue = {
@@ -82,6 +82,7 @@ const ProductsContextProvider = ({ children }) => {
     counter,
     setCounter,
     addToCart,
+    removeFromCart,
     deleteFromCart,
     getProductQuantity,
   };
