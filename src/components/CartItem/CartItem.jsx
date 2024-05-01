@@ -1,10 +1,14 @@
 import { useContext } from "react";
 import styles from "./CartItem.module.css";
 import { ProductsContext } from "../../Context/ProductContext";
+import { useParams } from "react-router-dom";
 
 const CartItem = ({ thumbnail, id, title, price }) => {
   // const product = props.product;
-  const { deleteFromCart } = useContext(ProductsContext);
+  const { products, removeFromCart } = useContext(ProductsContext);
+  const { productId } = useParams();
+  const product = products.find((e) => e.id === Number(productId));
+
   console.log(id);
 
   return (
@@ -28,7 +32,7 @@ const CartItem = ({ thumbnail, id, title, price }) => {
             <a
               className={styles.remove}
               onClick={() => {
-                deleteFromCart(id);
+                removeFromCart(product);
               }}
             >
               Remove item

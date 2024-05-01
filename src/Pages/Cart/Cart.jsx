@@ -6,25 +6,33 @@ import { ProductsContext } from "../../Context/ProductContext";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cart, setCart, counter, setCounter } = useContext(ProductsContext);
-  const [getTotalCost, setGetTotalCost] = useState(0);
+  const { cart, setCart, counter } = useContext(ProductsContext);
+  // const [getTotalCost, setGetTotalCost] = useState(0);
 
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(data);
-    setCounter(data ? data.length : 0);
+    // setCounter(data ? data.length : 0);
 
-    // Calculate total cost price
-    if (data && data.length > 0) {
-      const getTotalCost = data.reduce(
-        (acc, current) => acc + current.price,
-        0
-      );
-      setGetTotalCost(getTotalCost);
-    } else {
-      setGetTotalCost(0);
+    // // Calculate total cost price
+    // if (data && data.length > 0) {
+    //   const getTotalCost = data.reduce(
+    //     (acc, current) => acc + current.price,
+    //     0
+    //   );
+    //   setGetTotalCost(getTotalCost);
+    // } else {
+    //   setGetTotalCost(0);
+    // }
+    // }, [setCart, setCounter]);
+  }, [setCart]);
+
+  function getTotalCost() {
+    if (cart && cart.length > 0) {
+      return cart.reduce((acc, current) => acc + current.price, 0);
     }
-  }, [setCart, setCounter]);
+    return 0;
+  }
 
   return (
     <div className={styles.cart}>
@@ -54,7 +62,7 @@ const Cart = () => {
             <div className={styles.payment}>
               <p>All</p>
               <div className={styles["payment-inner"]}>
-                <h3> Total Price: &#8358;{getTotalCost.toFixed(2)}</h3>
+                <h3> Total Price: &#8358;{getTotalCost().toFixed(2)}</h3>
                 <Link to="/pay">
                   <CustomButton
                     text="Check Out"

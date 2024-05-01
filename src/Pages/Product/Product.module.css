@@ -70,6 +70,9 @@
 .other {
   background-color: #96c3d7;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .image-views {
   display: grid;
