@@ -83,7 +83,7 @@ const Selll = () => {
             </div>
         </div>
 
-        <Link to="/">
+        <Link to="/subscribe">
           <CustomButton
                 buttonStyle={style["big-btn"]}
                 type="orange"
@@ -92,7 +92,7 @@ const Selll = () => {
               />
         </Link>
         
-        
+
     </div>
     
 
