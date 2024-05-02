@@ -106,13 +106,18 @@ const Selll = () => {
         </div>
       </div>
 
-      <Link to="/subscribe">
-        <CustomButton
-          buttonStyle={style["big-btn"]}
-          type="orange"
-          text="NEXT"
-        />
-      </Link>
+
+        <Link to="/subscribe">
+          <CustomButton
+                buttonStyle={style["big-btn"]}
+                type="orange"
+                text="NEXT"
+                
+              />
+        </Link>
+        
+
+
     </div>
   );
 };
