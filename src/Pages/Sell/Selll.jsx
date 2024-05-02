@@ -4,7 +4,9 @@ import Congrats from "../../assets/congrats.svg"
 import ImageUpload from "../../components/ImageUpload/ImageUpload"
 import CustomButton from "../../components/CustomButton/CustomButton"
 import { Link } from "react-router-dom";
+
 const Selll = () => {
+  
   return (
     <div className={style.sellersCorner}>
         <div className={style.sellersCornerTitleContainer}>
@@ -12,6 +14,7 @@ const Selll = () => {
             <hr className={style.sellersCornerLine} />
             <p className={style.organiseSpace}>Organize your space with <span className={style.dono}>DonoDeclutter</span>  Today!</p>
         </div>
+        
        
         <div className={style.sellersFormContainer}>
             <form action="" className={style.sellersForm}>
@@ -28,10 +31,10 @@ const Selll = () => {
                 <input type="number" className={style.inputTypes}/><br/><br/>
 
                 <label className={style.labelTitle}>Phone Number</label><br/>
-                <input type="phone" className={style.inputTypes}/><br/><br/>
+                <input type="number" className={style.inputTypes}/><br/><br/>
                 <div className={style.receiptUploadContainer}>
                     <label className={style.receiptTitle}>Purchase Receipt</label>
-                    <ImageUpload/>
+                    <ImageUpload id="receipt"/>
                 </div>
                 <div>
                     <div className={style.selection}>Category
@@ -62,11 +65,11 @@ const Selll = () => {
                           <p>Add minimun of 2 photos and maximum of 5. First photo will be on the front page</p>
                         </div>
                         <div className={style.imageUploadIcons}>
-                           <ImageUpload/>
-                           <ImageUpload/>
-                           <ImageUpload/>
-                           <ImageUpload/>
-                           <ImageUpload/>
+                           <ImageUpload id="goods-1"/>
+                           <ImageUpload id="goods-2" />
+                           <ImageUpload id="goods-3"/>
+                           <ImageUpload id="goods-4"/>
+                           <ImageUpload id="goods-5"/>
                         </div>
                     </div>
                     
@@ -79,13 +82,17 @@ const Selll = () => {
               <img src={Congrats} alt="" className={style.congratsImg}/>
             </div>
         </div>
+
         <Link to="/">
-            <CustomButton
-              buttonStyle={style["big-btn"]}
-              type="orange"
-              text="NEXT"
-            />
+          <CustomButton
+                buttonStyle={style["big-btn"]}
+                type="orange"
+                text="NEXT"
+                
+              />
         </Link>
+        
+        
     </div>
     
 

@@ -1,9 +1,3 @@
-/* .imageUploadInput {
-    width: 5.188rem;
-    height: 3.313rem;
-    border: 1px solid #3C5A82;
-} */
-
 input[type='file'] {
     display: none;
 }
@@ -17,4 +11,3 @@ input[type='file'] {
     right: -2px;
     top: 7px;
 }
-

@@ -119,3 +119,19 @@
     font-weight: 700;
     margin: 5rem auto 1rem auto;
   }
+
+  .modalContentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem auto;
+    text-align: center;
+    
+  }
+
+  .modalHeader {
+    font-size: 1.125rem;
+    /* padding: .8rem; */
+    line-height: 2rem;
+    text-align: center;
+  }
