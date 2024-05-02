@@ -1,0 +1,41 @@
+.subscribe {
+  margin-top: 80px;
+}
+
+.subscribe img {
+  margin-bottom: 50px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main h3 {
+  margin-bottom: 37px;
+}
+
+main ul {
+  display: grid;
+  gap: 37px;
+  position: relative;
+}
+
+main ul.card li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 20px 5px;
+  width: 465px;
+  height: 56px;
+  border: 1px solid #3c5a82;
+  box-shadow: -5px 10px 2px -6px rgba(0, 0, 0, 0.4);
+}
+
+.subscribe .modal-content p {
+  padding: 150px;
+  margin: auto 0;
+  text-align: justify;
+}

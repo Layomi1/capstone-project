@@ -16,8 +16,7 @@ import Order from "./Pages/Order/Order";
 import Advert from "./Pages/Advert/Advert";
 import Recent from "./Pages/Recent/Recent";
 import ErrorBoundary from "./components/ComponentDidCatch";
-// import { useLoaderData } from "react-router-dom/server";
-
+import Subscription from "./Pages/Subscription/Subscription";
 function App() {
   return (
     <ErrorBoundary>
@@ -36,6 +35,7 @@ function App() {
         <Route path="/order" element={<Order />} />
         <Route path="/advert" element={<Advert />} />
         <Route path="/recent" element={<Recent />} />
+        <Route path="/subscribe" element={<Subscription />} />
 
         <Route path="/pay" element={<Paystack />} />
       </Routes>

@@ -1,0 +1,16 @@
+const Subscribe = [
+  {
+    title: "No Promotion",
+    price: 0,
+  },
+  {
+    title: "7 Days Promotion",
+    price: 2000,
+  },
+  {
+    title: "30 Days Promotion",
+    price: 21000,
+  },
+];
+
+export default Subscribe;
