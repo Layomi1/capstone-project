@@ -2,9 +2,12 @@ import ImageUpload from "../../components/ImageUpload/ImageUpload"
 import CustomButton from "../../components/CustomButton/CustomButton"
 import style from "../Donate/Donate.module.css"
 import DonateImg from "../../assets/donate.svg"
-import { Link } from "react-router-dom";
+import Modal from "../../components/Modals/Modal"
+import {useState} from 'react'
 
 const Donate = () => {
+
+  const [buttonModal, setButtonModal] = useState(false)
   return (
     <div className={style.donateContainer}>
       <div className={style.donateTitleContainer}>
@@ -17,6 +20,9 @@ const Donate = () => {
                   <img src={DonateImg} alt="hands with a heart" className={style.donateImage} />
             </div>    
         </div>
+         
+        
+        
         <div className={style.sellersFormContainer}>
             <form action="" className={style.sellersForm}>
               <label className={style.labelTitle}>Name of Product (s)</label><br/>
@@ -78,16 +84,27 @@ const Donate = () => {
                    
                 </div>
                
-                <Link to="/">
+                
                       <CustomButton
                         buttonStyle={style["big-btn"]}
                         type="orange"
                         text="Donate"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setButtonModal(true);
+                        }}
                       />
-                </Link>
+               
+               
             </form>
         </div>
-
+        <Modal trigger = {buttonModal}>
+                  <div className={style.modalContentContainer}>
+                    <h2 className={style.modalHeader}>We have received your request</h2>
+                    <p className={style.modalHeader}>The DonoDeclutter team would like to thank you<br/> in advance for making a difference! <br/> We would contact you shortly</p>
+                  </div>
+       
+        </Modal>
     </div>
   );
 };
