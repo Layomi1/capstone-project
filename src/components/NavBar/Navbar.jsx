@@ -2,7 +2,7 @@ import CustomButton from "../CustomButton/CustomButton";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import { RiMenuLine } from "react-icons/ri";
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { ProductsContext } from "../../Context/ProductContext";
 import { RxCaretDown } from "react-icons/rx";
 import Dropdown from "../Dropdown/Dropdown";
@@ -13,6 +13,7 @@ const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
   const [openNote, setIsOpenNote] = useState(false);
   const { counter } = useContext(ProductsContext);
+  const caret = useRef(null);
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
@@ -23,6 +24,9 @@ const Navbar = () => {
       setDropdown(false);
     } else {
       setDropdown(true);
+      if (caret.current) {
+        caret.current.classList.add("rotated-caret");
+      }
     }
   };
 
@@ -31,6 +35,9 @@ const Navbar = () => {
       setDropdown(false);
     } else {
       setDropdown(false);
+      if (caret.current) {
+        caret.current.classList.remove("rotated-caret");
+      }
     }
   };
 
@@ -78,7 +85,7 @@ const Navbar = () => {
             className={`styles ${["btn-teal"]} ${["login-btn"]} ${"login"}`}
           >
             Login
-            <RxCaretDown color="black" width="14px" height="10px" />
+            <RxCaretDown ref={caret} color="white" width="14px" height="10px" />
           </button>
           {dropdown && <Dropdown />}
         </li>

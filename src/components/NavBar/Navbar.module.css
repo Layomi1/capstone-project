@@ -19,6 +19,10 @@
   gap: 80px;
 }
 
+.rotated-caret {
+  transform: rotate(180deg);
+}
+
 .nav-icons {
   gap: 40px;
 }
