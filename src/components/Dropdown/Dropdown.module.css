@@ -21,9 +21,9 @@ ul .dropdown-menu li {
   background-color: #dedede;
 }
 
-/* .dropdown-menu .clicked {
-  /* display: none; *
-} */
+.dropdown-menu li a {
+  color: #000;
+}
 
 .dropdown-link {
   display: block;
